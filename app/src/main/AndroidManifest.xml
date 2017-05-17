@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bhavya.solution.airtimeChallenge">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.bhavya.solution.airtime.RECEIVE_POST" />
+    <permission android:name="com.intent.airtime.CHALLENGE_COMPLETED_ACTION"
+        android:protectionLevel="normal"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.bhavya.solution.airtimeChallenge.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.bhavya.solution.airtimeChallenge.commandservice.CommandService"
+            android:exported="false" />
+
+        <receiver
+            android:name=".MainActivity$MyReceiver"
+            android:exported="false">
+        <intent-filter>
+            <action android:name="com.intent.airtime.CHALLENGE_COMPLETED_ACTION">
+            </action>
+        </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
